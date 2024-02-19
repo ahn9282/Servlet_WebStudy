@@ -15,7 +15,7 @@
 	%>
 	<a href="exlogout.jsp">로그아웃</a>
 	<%
-		}else{
+		} else {
 			response.sendRedirect("exlogin.html");
 		}
 	%>
