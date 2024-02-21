@@ -18,11 +18,12 @@
 <%
 	EmpDao empDao = new EmpDao();
 	
-	List<EmpDto> dtos = empDao.empList();
+	List<EmpDto> dtos = empDao.empList2();
 
 	for(EmpDto emp : dtos){
 		out.print(emp+"<br>");
 	}
 %>
+<a href="input_info.html">더 입력하기</a>
 </body>
 </html>

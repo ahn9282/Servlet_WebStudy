@@ -21,10 +21,13 @@ public class EmpDto {
 	private String hiredate;
 	private int sal;
 	private int deptno;
+	private String comm;
+	private String manager;
+	private String dname;
 	
 	public EmpDto() {}
 
-	public EmpDto(int empno, String ename, String job, int mgr, String hiredate, int sal, int deptno) {
+	public EmpDto(int empno, String ename, String job, int mgr, String hiredate, int sal, String comm,int deptno) {
 		this.empno = empno;
 		this.ename = ename;
 		this.job = job;
@@ -32,6 +35,52 @@ public class EmpDto {
 		this.hiredate = hiredate;
 		this.sal = sal;
 		this.deptno = deptno;
+		this.comm=comm;
+	}
+	public EmpDto(int empno, String ename, String job, int mgr, String hiredate, int sal ,int deptno) {
+		this.empno = empno;
+		this.ename = ename;
+		this.job = job;
+		this.mgr = mgr;
+		this.hiredate = hiredate;
+		this.sal = sal;
+		this.deptno = deptno;
+	}
+	public EmpDto(int empno, String ename, String job, 
+			String manager, String hiredate, String comm,
+			int sal ,String dname) {
+		this.empno = empno;
+		this.ename = ename;
+		this.job = job;
+		this.manager = manager;
+		this.hiredate = hiredate;
+		this.sal = sal;
+		this.dname = dname;
+		this.comm=comm;
+	}
+
+	public String getManager() {
+		return manager;
+	}
+
+	public void setManager(String manager) {
+		this.manager = manager;
+	}
+
+	public String getDname() {
+		return dname;
+	}
+
+	public void setDname(String dname) {
+		this.dname = dname;
+	}
+
+	public String getComm() {
+		return comm;
+	}
+
+	public void setComm(String comm) {
+		this.comm = comm;
 	}
 
 	public int getEmpno() {
@@ -98,6 +147,8 @@ public class EmpDto {
 				" 사번:"+getMgr()+
 				" 입사날짜:"+getHiredate()+
 				" 월급:"+getSal()+
-				" 부서번호:"+getDeptno();
+				" 부서번호:"+getDeptno()+
+				" 커미션 :"+getComm();
+		
 	}
 }

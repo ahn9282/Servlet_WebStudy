@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<h1>사원 정보 입력</h1>
+<hr>
+<form action="check_info.jsp">
+사원번호<input type="number" name="empno" size="20"><br>
+
+사원이름<input type="text" name="ename" size="20"><br>
+직급  <select name = "job">
+	<option value = "clerk">clerk</option>
+	<option value = "salesman"selected = "selected">salesman</option>
+	<option value = "manager">manager</option>
+	<option value = "analyst">analyst</option>
+	<option value = "president">president</option>
+	</select><br/>
+매니저 <select name = "mgr">
+	<option value = "jones">jones</option>
+	<option value = "ford"selected = "selected">ford</option>
+	<option value = "clark">clark</option>
+	<option value = "blake">blake</option>
+	<option value = "king">king</option>
+	</select><br/>
+입사일 <input type="date" name="hiredate" size="20"><br/>
+
+급여 <input type="text" name="sal" size="20"><br/>
+커미션 <input type="text" name="comm" size="20"><br/>
+
+부서명 <select name = "dname">
+	<option value = "accounting">accounting</option>
+	<option value = "research"selected = "selected">research</option>
+	<option value = "sales">sales</option>
+	<option value = "operations">operations</option>
+	</select><br/>
+<input type="submit" value="전송">
+</form>
+</body>
+</html>

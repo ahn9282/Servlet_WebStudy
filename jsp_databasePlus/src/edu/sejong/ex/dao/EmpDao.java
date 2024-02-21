@@ -1,8 +1,16 @@
 package edu.sejong.ex.dao;
 
-import java.sql.*;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
+
+import javax.naming.Context;
+import javax.naming.InitialContext;
+import javax.sql.DataSource;
 
 import edu.sejong.ex.vo.DeptVO;
 import edu.sejong.ex.vo.EmpDto;
@@ -10,20 +18,28 @@ import edu.sejong.ex.vo.EmpDto;
 
 public class EmpDao {
 	
-	private String driver= "oracle.jdbc.driver.OracleDriver";
-	private String url = "jdbc:oracle:thin:@localhost:1521:xe";
-	private String id = "scott";
-	private String pw = "tiger";
+	
+	  private String driver= "oracle.jdbc.driver.OracleDriver"; 
+	  private String url = "jdbc:oracle:thin:@localhost:1521:xe"; 
+	  private String id = "scott";
+	  private String pw = "tiger";
+	 
+		private DataSource datasource = null;
 		
 	public EmpDao() {
 		try {
-			Class.forName("oracle.jdbc.driver.OracleDriver");
+			//Class.forName("oracle.jdbc.driver.OracleDriver");
+			Context context = new InitialContext();
+			datasource = (DataSource)context.lookup("java:comp/env/jdbc/oracle");
+			
 		} catch (Exception e) {
+			
 			e.printStackTrace();
 		}
 	}
 	
 	public List<EmpDto> empList(){
+		
 		List<EmpDto> emps = new ArrayList<>();
 		
 		Connection con=null;
@@ -34,9 +50,10 @@ public class EmpDao {
 		
 		try {
 	
-	    	con = DriverManager.getConnection(url,id,pw);
+	    	con = datasource.getConnection();
 	    	stmt = con.createStatement();
 	    	rs = stmt.executeQuery(sql);
+	    	
 			
 	      	while(rs.next()){
 	    		
@@ -78,8 +95,98 @@ public class EmpDao {
 		
 		return emps;
 	}
+	public int insert(EmpDto emp) {
+
+		Connection con = null;
+		PreparedStatement pstmt = null;
+
+		String sql = "insert into emp (empno,ename,job,mgr,hiredate,sal,comm,deptno) "
+				+ "values(?,?,?,?,?,?,?,?)";
+
+		System.out.println("sql 확인:" + sql);
+		int result = -1;
+		try {
+
+			con = DriverManager.getConnection(url, id, pw);
+			pstmt = con.prepareStatement(sql);
+
+			pstmt.setInt(1, emp.getEmpno());
+			pstmt.setString(2, emp.getEname());
+			pstmt.setString(3, emp.getJob());
+			pstmt.setInt(4, emp.getMgr());
+			pstmt.setString(5, emp.getHiredate());
+			pstmt.setInt(6, emp.getSal());
+			pstmt.setString(7, emp.getComm());
+			pstmt.setInt(8, emp.getDeptno());
+
+			result = pstmt.executeUpdate();
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+
+			try {
+
+				if (pstmt != null)
+					pstmt.close();
+
+				if (con != null)
+					con.close();
+
+			} catch (Exception e2) {
+				e2.printStackTrace();
+			}
+		}
+
+		return result;
+	}
 	
-	//자바 1.7 이상 일때
+
+	public int insertempEX(EmpDto emp) {
+
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		String sql = "insert into empEx (empno,ename,job,manager,hiredate,comm,sal,dname) "
+				+ "values(?,?,?,?,?,?,?,?)";
+
+		System.out.println("sql 확인:" + sql);
+		int result = -1;
+		try {
+
+			con = DriverManager.getConnection(url, id, pw);
+			pstmt = con.prepareStatement(sql);
+			pstmt = con.prepareStatement(sql);
+
+			pstmt.setInt(1, emp.getEmpno());
+			pstmt.setString(2, emp.getEname());
+			pstmt.setString(3, emp.getJob());
+			pstmt.setString(4, emp.getManager());
+			pstmt.setString(5, emp.getHiredate());
+			pstmt.setInt(6, emp.getSal());		
+			pstmt.setString(7, emp.getComm());
+			pstmt.setString(8, emp.getDname());
+
+			result = pstmt.executeUpdate();
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+
+			try {
+
+				if (pstmt != null)
+					pstmt.close();
+
+				if (con != null)
+					con.close();
+
+			} catch (Exception e2) {
+				e2.printStackTrace();
+			}
+		}
+
+		return result;
+	}
 	public List<EmpDto> empList2(){
 		List<EmpDto> emps = new ArrayList<>();	
 		
@@ -125,6 +232,7 @@ public class EmpDao {
 		
 		return html;
 	}
+	
 	
 	//자바 1.11 이상 일때
 //		public List<EmpDto> empList3(){
