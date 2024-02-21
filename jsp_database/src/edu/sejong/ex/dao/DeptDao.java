@@ -31,7 +31,7 @@ public class DeptDao {
 		Connection con = null;
 		Statement stmt = null;
 		ResultSet rs = null;
-		String sql = "select * from dept";
+		String sql = "select * from dept01";
 		try {
 
 			Class.forName(driver);

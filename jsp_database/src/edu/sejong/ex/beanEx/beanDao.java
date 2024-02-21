@@ -7,7 +7,6 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
-import edu.sejong.ex.empD.EmpDto;
 
 public class beanDao {
 	String driver = "oracle.jdbc.driver.OracleDriver";
@@ -64,6 +63,50 @@ public class beanDao {
 				// TODO: handle exception
 			}
 		}
+	}
+	public List<BeanDto> setList1() {
+
+		Connection con = null;
+		Statement stmt = null;
+		ResultSet rs = null;
+		String sql = "select * from emp";
+		ArrayList<BeanDto> emplist = new ArrayList<>();
+		try {
+			Class.forName(driver);
+			con = DriverManager.getConnection(url, id, pw);
+			stmt = con.createStatement();
+			rs = stmt.executeQuery(sql);
+			while (rs.next()) {
+				String empno = rs.getString("empno");
+				String ename = rs.getString("ename");
+				String job = rs.getString("job");
+				String mgr = rs.getString("mgr");
+				String hiredate = rs.getString("hiredate");
+				String deptno = rs.getString("deptno");
+				String sal = rs.getString("sal");
+				String comm = rs.getString("comm");
+
+				BeanDto empdto = new BeanDto(empno, ename, job, mgr, deptno, hiredate, sal, comm);
+				emplist.add(empdto);
+			}
+		} catch (Exception e) {
+			// TODO: handle exception
+		} finally {
+			try {
+
+				if (rs != null)
+					rs.close();
+
+				if (stmt != null)
+					stmt.close();
+
+				if (con != null)
+					con.close();
+			} catch (Exception e2) {
+				// TODO: handle exception
+			}
+		}
+		return emplist;
 	}
 
 	public String getList() {
