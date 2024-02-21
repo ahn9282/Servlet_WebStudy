@@ -101,7 +101,7 @@ public class EmpDao {
 		String sql = "insert into emp (empno,ename,job,mgr,hiredate,sal,comm,deptno) " + "values(?,?,?,?,?,?,?,?)";
 
 		System.out.println("sql 확인:" + sql);
-		int result = -1;
+		int result = -1; 
 		try {
 
 			con = DriverManager.getConnection(url, id, pw);
