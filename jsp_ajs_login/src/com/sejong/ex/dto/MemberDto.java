@@ -6,6 +6,12 @@ private String pw;
 private String email;
 private String address;
 public MemberDto() {}
+public MemberDto(String id, String pw, String email, String address) {
+	this.id=id;
+	this.pw=pw;
+	this.email=email;
+	this.address=address;
+}
 public String getId() {
 	return id;
 }

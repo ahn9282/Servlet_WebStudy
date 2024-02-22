@@ -28,7 +28,48 @@ public class MemberDao {
          e.printStackTrace();
       }
    }
-   
+  
+   public int insertMember(MemberDto member){
+	      int result = MEMBER_LOGIN_FAIL;
+	      
+	      Connection con=null;
+	      PreparedStatement pstmt = null;
+	      
+	      String sql = "insert into members values(?,?,?,?)";
+	      
+	      try {
+	   
+	          con = dataSource.getConnection();
+	          pstmt = con.prepareStatement(sql);
+	          pstmt.setString(1, member.getId());
+	          pstmt.setString(2, member.getPw());
+	          pstmt.setString(3, member.getEmail());
+	          pstmt.setString(4, member.getAddress());
+	          
+	         result = pstmt.executeUpdate();
+	         
+	      
+	         					
+	      } catch (Exception e) {
+	         e.printStackTrace();
+	      } finally {
+	         
+	         try {
+	               
+	               if(pstmt != null)
+	                  pstmt.close();
+	      
+	               if(con != null)
+	                  con.close();      
+	               
+	         } catch (Exception e2) {
+	            e2.printStackTrace();
+	         }
+	         
+	      }
+	      
+	      return result;
+	   }
 
    public int userCheck(String id, String pw){
       int result = MemberDao.MEMBER_LOGIN_FAIL; //0

@@ -17,9 +17,10 @@
 	<br />
 
 
-	<a
-		href=<%=(request.isRequestedSessionIdValid()) ? "main.jsp" : "login.jsp"%>>
-		로그인 페이지로 이동</a>
+	<a href="login.jsp"> 로그인 페이지로 이동 </a>
+		<form action="logout.jsp" method="post">
+		<input type="submit" value="로그아웃">
+		</form>
 
 </body>
 </html>
