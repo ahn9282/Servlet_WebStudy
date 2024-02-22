@@ -24,7 +24,7 @@
 		ed.insertempEX(in);
 		
 	%>
-	<a href=emp_list.jsp>확인 list</a> 
+	<a href=check_input.jsp>확인 list</a> 
 	
 </body>
 </html>
