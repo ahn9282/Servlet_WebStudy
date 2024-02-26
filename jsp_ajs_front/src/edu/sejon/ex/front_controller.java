@@ -103,19 +103,25 @@ public class front_controller extends HttpServlet {
 			
 			writer.println("여기서 DAO 객체 생성 후 데이터 가져와서 보여주기");
 			writer.println("</body></html>");
+			
 		}else if(command.equals("/modify.do")) {
+			
 			System.out.println("업데이트된 데이터 보여 주기");
 			System.out.println("-------------------------------");
+			
 			response.setContentType("text/html;charset=UTF-8");
 			request.setCharacterEncoding("UTF-8");
+			
 			mCommand = new MemberModifyCommand();
 			
 			PrintWriter writer = response.getWriter();
 			
 			mCommand.execute(request, response);
+			
 			writer.println("<html><head></head><body>");
 			
 			writer.println("업데이트 되었습니다.");
+			
 			writer.println("</body></html>");
 		}
 	}
