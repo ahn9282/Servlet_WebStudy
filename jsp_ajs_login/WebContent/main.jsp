@@ -20,6 +20,7 @@
 	<a href="login.jsp"> 로그인 페이지로 이동 </a>
 		<form action="logout.jsp" method="post">
 		<input type="submit" value="로그아웃">
+		<input type="button" value="회원정보수정" onclick="javascript:window.location='modify.jsp'"> 
 		</form>
 
 </body>

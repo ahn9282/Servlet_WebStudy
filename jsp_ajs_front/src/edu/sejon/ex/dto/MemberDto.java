@@ -1,4 +1,4 @@
-package com.sejong.ex.dto;
+package edu.sejon.ex.dto;
 
 public class MemberDto {
 private String id;

@@ -57,15 +57,13 @@ public class EmpDao {
 				int empno = rs.getInt("empno");
 				String ename = rs.getString("ename");
 				String job = rs.getString("job");
-
 				int mgr = rs.getInt("mgr");
-
 				String hiredate = rs.getString("hiredate");
 				int sal = rs.getInt("sal");
 				String comm = rs.getString("comm");
 				int deptno = rs.getInt("deptno");
 
-				EmpDto dto = new EmpDto(empno, ename, job, mgr, hiredate, sal, deptno);
+				EmpDto dto = new EmpDto(empno, ename, job, mgr, hiredate, sal, comm, deptno);
 
 				emps.add(dto);
 			}

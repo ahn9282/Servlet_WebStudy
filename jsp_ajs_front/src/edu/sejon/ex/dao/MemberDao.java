@@ -1,14 +1,15 @@
-package com.sejong.ex.dao;
+package edu.sejon.ex.dao;
 
-import java.sql.*;
-import java.util.ArrayList;
-import java.util.List;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 
 import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.sql.DataSource;
 
-import com.sejong.ex.dto.MemberDto;
+import edu.sejon.ex.dto.MemberDto;
+
 
 public class MemberDao {
 
@@ -203,4 +204,5 @@ public class MemberDao {
 		return dto;
 	}
 
+	
 }
