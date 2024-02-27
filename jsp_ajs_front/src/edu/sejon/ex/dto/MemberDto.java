@@ -6,6 +6,7 @@ private String pw;
 private String email;
 private String address;
 public MemberDto() {}
+
 public MemberDto(String id, String pw, String email, String address) {
 	this.id=id;
 	this.pw=pw;
@@ -36,5 +37,11 @@ public String getAddress() {
 public void setAddress(String address) {
 	this.address = address;
 }
-
+@Override
+public String toString() {
+return " 아이디 : " + this.getId() + 
+		" 비밀 번호 : " + this.getPw() + 
+		" 이메일 : " + this.getEmail() + 
+		" 주소 : " + this.getAddress() + "<br>";
+}
 }

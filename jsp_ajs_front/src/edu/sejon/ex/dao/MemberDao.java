@@ -3,6 +3,8 @@ package edu.sejon.ex.dao;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.naming.Context;
 import javax.naming.InitialContext;
@@ -22,12 +24,56 @@ public class MemberDao {
 	public MemberDao() {
 		try {
 			Context context = new InitialContext();
-			dataSource = (DataSource) context.lookup("java:comp/env/jdbc/oracle");
+			dataSource = (DataSource) 
+					context.lookup("java:comp/env/jdbc/oracle");
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
+	public List<MemberDto> printMember() {
+		List<MemberDto> list = new ArrayList<MemberDto>();
+		
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
 
+		String sql = "select * from members";
+
+		try {
+
+			con = dataSource.getConnection();
+			pstmt = con.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+			while (rs.next()) {
+				String id = rs.getString("id");
+				String pw = rs.getString("pw");
+				String email = rs.getString("email");
+				String address = rs.getString("address");
+				MemberDto dto = new MemberDto(id,pw,email,address);
+				list.add(dto);
+			}
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+
+			try {
+
+				if (pstmt != null)
+					pstmt.close();
+
+				if (con != null)
+					con.close();
+
+			} catch (Exception e2) {
+				e2.printStackTrace();
+			}
+
+		}
+
+		return list;
+	}
+	
 	public int modifyMember(MemberDto member) {
 		int result = 0;
 
@@ -67,7 +113,44 @@ public class MemberDao {
 
 		return result;
 	}
+	public int deleteMember(MemberDto member) {
+		int result = 0;
 
+		Connection con = null;
+		PreparedStatement pstmt = null;
+
+		String sql = "delete from members where id =?";
+
+		try {
+
+			con = dataSource.getConnection();
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, member.getId());
+			
+
+			result = pstmt.executeUpdate();
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+
+			try {
+
+				if (pstmt != null)
+					pstmt.close();
+
+				if (con != null)
+					con.close();
+
+			} catch (Exception e2) {
+				e2.printStackTrace();
+			}
+
+		}
+
+		return result;
+	}
+	
 	public int insertMember(MemberDto member) {
 		int result = MEMBER_LOGIN_FAIL;
 
@@ -203,6 +286,5 @@ public class MemberDao {
 
 		return dto;
 	}
-
 	
 }

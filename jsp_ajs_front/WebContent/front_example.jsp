@@ -22,6 +22,8 @@
 <a href="${pageContext.request.contextPath}/delete.do">delete</a><!-- 제일 많이 쓰이는 방식  -->
 <hr>
 <a href="${pageContext.request.contextPath}/modify.do">modify</a><!-- 제일 많이 쓰이는 방식  -->
+<hr>
+<a href="${pageContext.request.contextPath}/list.do">list</a><!-- 제일 많이 쓰이는 방식  -->
 
 
 

@@ -157,7 +157,9 @@ public class DeptDao {
 
 		String sql = "update dept01 set dname =? , loc =? where deptno = ?";
 
-		System.out.println("sql 확인:" + sql);
+		System.out.println("sql 확인: update dept01 set dname = " + dept.getDname() +
+				" , loc = " + dept.getLoc() + 
+				" where deptno = " + dept.getDeptno());
 		int result = -1;
 		try {
 
