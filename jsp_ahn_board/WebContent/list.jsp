@@ -16,15 +16,13 @@
 		<td>이름</td>
 		<td>날짜</td>
 		<td>제목</td>
-		<td>댓글</td>
-		<td>히트</td>
+		<td>조회수</td>
 		</tr>
 		<c:forEach var="board" items="${list}">
 			<tr>
 				<td>${board.bid}<br></td>
 				<td>${board.bname}<br></td>
 				<td>${board.bdate}<br></td>
-				<td>${board.btitle}<br></td>
 				<td><c:forEach begin="1" end="${board.bindent}">[Re]</c:forEach>
 					<a href="content_view.do?bid=${board.bid}">${board.btitle}</a></td>
 				<td>${board.bhit}<br></td>

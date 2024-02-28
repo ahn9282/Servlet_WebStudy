@@ -201,12 +201,13 @@ public class Tdao {
 		ResultSet rs = null;
 
 		try {
-			String sql = "delete from testboard where bid = ?";
+			String sql = "delete from testboard where bgroup = ? or bid = ?";
 
 			con = dataSource.getConnection();
 			pstmt = con.prepareStatement(sql);
 
 			pstmt.setInt(1, bidnum);
+			pstmt.setInt(2, bidnum);
 
 			int rn = pstmt.executeUpdate();
 
