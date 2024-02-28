@@ -111,7 +111,7 @@ public class BDao {
 			}
 			
 		}
-			public BDto contentView(String bid) {
+	public BDto contentView(String bid) {
 				
 				increasehit(bid);
 				
