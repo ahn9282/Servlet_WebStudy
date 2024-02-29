@@ -69,7 +69,7 @@ public class TCotroller extends HttpServlet {
 				
 				comm = new CommandListBoard();
 				comm.execute(request, response);
-				viewPage="/list.jsp";
+				viewPage="/board_tables.jsp";
 				
 			}else if(command.equals("/content_view.do")) {
 				

@@ -14,6 +14,7 @@ public class CommandListBoard implements Command{
 	public void execute(HttpServletRequest request, HttpServletResponse response) {
 		Tdao dao = new Tdao();
 		List<Tdto> list = dao.list();
+		System.out.println("확인 : " + list.size());
 		request.setAttribute("list", list);
 		
 	}
