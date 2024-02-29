@@ -76,7 +76,6 @@ public class Tdao {
 	}
 
 	public Tdto viewContent(int bidnum) {
-		increaseHit(bidnum);
 		Tdto dto = null;
 
 		String sql = "select * from testboard where bid = ?";

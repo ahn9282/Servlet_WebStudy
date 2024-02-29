@@ -8,7 +8,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<h1>게시판 프로젝트</h1>
+	<h1>게시판 프로젝트 - testboard(DB table)</h1>
 	<hr>
 	<table width="500" border="5">
 		<tr>

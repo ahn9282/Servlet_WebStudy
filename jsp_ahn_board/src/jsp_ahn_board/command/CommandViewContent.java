@@ -15,6 +15,7 @@ public class CommandViewContent implements Command {
 		String bid = request.getParameter("bid");
 		int bidnum = Integer.valueOf(bid);
 		Tdao dao = new Tdao();
+		dao.increaseHit(bidnum);
 
 		Tdto dto = dao.viewContent(bidnum);
 		request.setAttribute("content_view", dto);
