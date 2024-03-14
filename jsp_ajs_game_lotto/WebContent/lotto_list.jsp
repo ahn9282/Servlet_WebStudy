@@ -65,7 +65,7 @@
       <svg class="rounded-circle" width="140" height="140" focusable="false">
         <rect width="100%" height="100%" fill="${lotto.getColor(num)}"
         />
-        <text text-anchor="middle" x="50%" y="50%" fill="white" dy=".3em" font-size="60">${num }</text>
+        <text text-anchor="middle" x="50%" y="50%" fill="white" dy=".3em" font-size="60">${num}</text>
       </svg>
     </div>
    </c:forEach>
@@ -77,7 +77,7 @@
 
      <div class="col-lg-12 mt-3 d-flex justify-content-center align-items-center">
       <svg class="rounded-circle" width="140" height="140" focusable="false">
-        <rect width="100%" height="100%" fill="${lotto.getColor(lotto.bonusnum )}"
+        <rect width="100%" height="100%" fill="${lotto.getColor(lotto.bonusnum)}"
         />
         <text text-anchor="middle" x="50%" y="50%" fill="black" dy=".3em" font-size="60">${lotto.bonusnum }</text>
       </svg>
