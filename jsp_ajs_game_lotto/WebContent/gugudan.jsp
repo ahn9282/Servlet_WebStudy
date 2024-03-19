@@ -44,7 +44,6 @@
             </li>
           </ul>
           <form class="d-flex" role="search">
-          <span id="time" class="text-white m-2 p-0" style="min-width:100px"></span>
             <input class="form-control me-2 bg-white " type="search" placeholder="Search" aria-label="Search">
             <button class="btn btn-outline-success" type="submit">Search</button>
           </form>
@@ -54,63 +53,49 @@
   </hedear>
 
   <main>
-<div class="container">
-  <div class="row">
-  <%
-  int count = 0;
-  %>
-  <c:forEach var="num" items="${lotto.numbers}">
 
+   <table class="table-bordered" style="min-width:1000px">
+        <thead class="bordered text-center">
+            <tr>
+                <th>2단</th>
+                <th>3단</th>
+                <th>4단</th>
+                <th>5단</th>
+                <th>6단</th>
+                <th>7단</th>
+                <th>8단</th>
+                <th>9단</th>
+            </tr>
+        </thead>
+        <tbody class=" text-center">
 
-    <div class="col-lg-2 mt-3 d-flex justify-content-center align-items-center">
-      <svg class="rounded-circle" width="140" height="140" focusable="false">
-        <rect width="100%" height="100%" fill="${lotto.getColor(num)}"
-        />
-        <text text-anchor="middle" x="50%" y="50%" fill="white" dy=".3em" font-size="60">${num}</text>
-      </svg>
-    </div>
-   </c:forEach>
-  </div>
-</div>   
-
-<div class="container d-flex flex-column align-items-center justify-content-center">
-        <h1>+</h1>
-
-     <div class="col-lg-12 mt-3 d-flex justify-content-center align-items-center">
-      <svg class="rounded-circle" width="140" height="140" focusable="false">
-        <rect width="100%" height="100%" fill="${lotto.getColor(lotto.bonusnum)}"
-        />
-        <text text-anchor="middle" x="50%" y="50%" fill="black" dy=".3em" font-size="60">${lotto.bonusnum }</text>
-      </svg>
-    </div>
-      </div>
- 
-
+            <script>
+                
+                for(let i =1; i<=9;i++){
+                    document.write("<tr>");
+                        for(let j =2; j<=9;j++){
+                            document.write("<td>");
+                                document.write(j+ " * " + i+" = " + (i*j) );
+                                document.write("</td>");
+                            }
+                            document.write("</tr>");
+                        }
+                        </script>
+                        </tbody>
+    </table>
   </main>
 
-    
-  <footer id="footer" class="text-center d-flex justify-content-between border-top" style="overflow-hidden">
-  
-    <p class="m-auto" style="position:relative width:50%">© Company 2022-2023 </p>
-    <div id="clock" class="btn btn-primary m-0" style="float-right min-width:60px" ></div>
-     <script>
-    function clock(){
-   let today = new Date();
-   let hour= today.getHours();
-   let minute = today.getMinutes();
-    let sec = today.getSeconds();
+  <footer>
 
-    //document.write(hour + " : " + minute + " : " + sec+ "<br>") ;
+    <hr>
+    <div class="text-center">
 
-       let clockElement = document.getElementById('clock');
-       clockElement.innerHTML =" NOW : "+ hour + " : " + minute + " : " + sec+ "<br>";
-       let timeElement = document.getElementById('time');
-       timeElement.innerHTML = hour + " : " + minute + " : " + sec+ "<br>";
-	}
-	clock();
-     setInterval(clock,1000);
-  </script>
+      <p>
+        © Comapny 2022-2023
+      </p>
+    </div>
   </footer>
+
 
 </body>
 </html>

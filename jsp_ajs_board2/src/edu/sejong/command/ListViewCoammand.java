@@ -16,7 +16,6 @@ public class ListViewCoammand implements Command{
 		
 		Bdao dao = new Bdao();
 		List<Bdto> list = dao.list();
-		System.out.println("확인 : " + list.size());
 		request.setAttribute("list", list);
 	}
 

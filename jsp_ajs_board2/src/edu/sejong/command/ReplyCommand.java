@@ -21,7 +21,6 @@ public class ReplyCommand implements Command{
 	int bstepnum = Integer.valueOf(request.getParameter("bstep"));
 	int bindentnum = Integer.valueOf(request.getParameter("bindent"));
 	Bdao dao = new Bdao();
-	System.out.println("답변 확인 : " + bgroupnum);
 			dao.reply(bidnum, bname,bcontent,btitle,bgroupnum,bstepnum,bindentnum);
 	}
 

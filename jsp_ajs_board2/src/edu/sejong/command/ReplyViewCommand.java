@@ -18,7 +18,6 @@ public class ReplyViewCommand implements Command{
 		Bdao dao = new Bdao();
 		Bdto dto =new Bdto();
 				dto = dao.replyView(bidnum);
-System.out.println("리프라이 뷰 확인 : " + dto.getBgroup());				
 				request.setAttribute("reply_view", dto);
 	}
 
