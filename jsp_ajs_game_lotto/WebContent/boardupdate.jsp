@@ -14,23 +14,6 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous">
     </script>
-    <script>
-    function clock(){
-   let today = new Date();
-   let hour= today.getHours();
-   let minute = today.getMinutes();
-    let sec = today.getSeconds();
-
-    //document.write(hour + " : " + minute + " : " + sec+ "<br>") ;
-
-       let clockElement = document.getElementById('clock');
-       clockElement.innerHTML =" NOW : "+ hour + " : " + minute + " : " + sec+ "<br>";
-       let timeElement = document.getElementById('time');
-       timeElement.innerHTML = hour + " : " + minute + " : " + sec+ "<br>";
-	}
-	clock();
-     setInterval(clock,1000);
-  </script>
   <style>
     #game {
       min-height: 100vh;
@@ -48,17 +31,18 @@
 
     #modal{
     
-    
+      width:100%;
+      height: 100%;
       position: fixed;
-      top: 150px;
-      left: 35%;
+      top: 0;
+      left:0;
       display: flex;
       justify-content: center;
       align-items: center;
       background-color: white;
-      border: 1px solid #aaaaaa;
+      border: none;
       overflow: hidden;
-
+      background: rgba(0,0,0,0.5);
     }
     #modalcontent{
      width:500px;
@@ -93,7 +77,7 @@
             </li>
           </ul>
           <form class="d-flex" role="search">
-           <span id="time" class="text-white m-2 p-0" style="min-width:100px"></span>
+            <span id="time" class="text-white m-2 p-0" style="min-width:100px"></span>
             <input class="form-control me-2 bg-white " type="search" placeholder="Search" aria-label="Search">
             <button class="btn btn-outline-success" type="submit">Search</button>
           </form>
@@ -105,96 +89,7 @@
   
 
     <main>
-      <div class="container">
-
-        <h2 class="my-3 text-center">게시판</h2>
-        <div class="card shadow">
-          <div class="card-header ">
-            <h5 class="text-primary">DataTables Example</h5>
-          </div>
-          <div class="card-body p-3">
-            <div class="table-responsive">
-              <table class="table table-bordered table-hover">
-                <form action="${pageContext.request.contextPath }/boarddelete.do" method="post">
-                  <thead>
-                    <tr class="text-center">
-                      <th>번호</th>
-                      <th>이름</th>
-                      <th>제목</th>
-                      <th>날짜</th>
-                      <th>히트</th>
-                      <th>삭제</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-
-                    <c:forEach var="dto" items="${list }">
-                      <tr class="text-center ">
-                        <td>${dto.getBid()}</td>
-                        <td>${dto.getBname()}</td>
-                        <td><a href="boardupdate.do?bid=${dto.bid}">${dto.btitle}</a></td>
-                        <td>${dto.getBdate()}</td>
-                        <td>${dto.getBhit()}</td>
-                        <td><button class="btn btn-success" type="submit" name="bid"
-                            value="${dto.getBid() }">삭제</button></td>
-                      </tr>
-                    </c:forEach>
-                  </tbody>
-                </form>
-              </table>
-
-              <div class="container my-3 d-flex flex-row justify-content-center text-center">
-                <div class="border py-2 text-primary" style="width:2em ">
-                  1
-                </div>
-                <div class="border py-2 text-primary" id="tenmore" style="width:2em">
-                  >>
-                </div>
-              </div>
-            </div>
-
-          </div>
-          <div class="card-footer d-flex justify-content-center">
-
-
-
-            <button class="btn btn-primary modal_btn" id="modal_button">글쓰기</button>
-
-            <div id="gomodal"></div>
-
-            <div id="modal" class="modal-overlay">
-              <form action="${pageContext.request.contextPath }/board_add.do">
-
-                <div class="card card-border d-flex flex-column justify-content-center" id="modalcontent">
-                  <div class="card-header w-100">
-                    <h2>글쓰기</h2>
-                  </div>
-                  <div class="card-body p-3 w-100">
-                    <p class="mb-0">작성자 :</p>
-                    <input class="w-100 mx-auto p-3" type="text" name="bname" value=""
-                      style="border-radius: 5px;">
-                    <p class="mb-0">제목 : </p>
-                    <input class="w-100 mx-auto p-3" type="text" name="btitle" value=""
-                      style="border-radius: 5px;">
-                    <p class="mb-0">내용 : </p>
-                    <textarea class="w-100 mx-auto p-3" style="min-height: 60px ;border-radius: 5px;"
-                      name="bcontent"></textarea>
-                  </div>
-                  <div class="card-footer w-100">
-                    <button class="btn btn-primary me-auto" type="submit">전송</button>
-                    <a class="btn btn-secondary" id="closebtn">취소</a>
-                  </div>
-                </div>
-              </form>
-            </div>
-
-            
-
-          </div>
-          
-        </div>
-      </div>
-
+      
     </main>
     <script>
 
@@ -229,7 +124,22 @@
 
 
     </script>
+<script>
+  function clock(){
+ let today = new Date();
+ let hour= today.getHours();
+ let minute = today.getMinutes();
+  let sec = today.getSeconds();
 
+  //document.write(hour + " : " + minute + " : " + sec+ "<br>") ;
+
+   
+     let timeElement = document.getElementById('time');
+     timeElement.innerHTML = hour + " : " + minute + " : " + sec+ "<br>";
+}
+clock();
+   setInterval(clock,1000);
+</script>
 
     <footer>
 
@@ -241,7 +151,7 @@
         </p>
       </div>
     </footer>
-
+    
 
 </body>
 
