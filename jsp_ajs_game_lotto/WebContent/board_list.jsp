@@ -147,7 +147,7 @@
             <div id="gomodal"></div>
 
             <div id="modal" class="modal-overlay">
-              <form action="${pageContext.request.contextPath }/board_add.do">
+              <form action="${pageContext.request.contextPath }/board_add.do" method="post">
 
                 <div class="card card-border d-flex flex-column justify-content-center" id="modalcontent">
                   <div class="card-header w-100">
